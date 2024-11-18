@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve Your Place - Travel Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="reservation-style.css">
+</head>
+<body>
+    <div class="reservation-container">
+        <div class="reservation-background"></div>
+        <form class="reservation-form">
+            <h2>Reserve Your Place</h2>
+            <div class="form-grid">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3>Personal Details</h3>
+                    <div class="input-group">
+                        <i class="ri-user-line"></i>
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="ri-mail-line"></i>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="ri-phone-line"></i>
+                        <input type="tel" placeholder="Phone Number" required>
+                    </div>
+                </div>
+
+                <!-- Trip Details -->
+                <div class="form-section">
+                    <h3>Trip Details</h3>
+                    <div class="input-group">
+                        <i class="ri-map-pin-line"></i>
+                        <select id="destinationSelect" required>
+                            <option value="">Select Destination</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <i class="ri-calendar-line"></i>
+                        <input type="date" placeholder="Check-in Date" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="ri-calendar-line"></i>
+                        <input type="date" placeholder="Check-out Date" required>
+                    </div>
+                </div>
+
+                <!-- Additional Details -->
+                <div class="form-section wide-section">
+                    <h3>Additional Information</h3>
+                    <div class="input-group">
+                        <i class="ri-group-line"></i>
+                        <select required>
+                            <option value="">Number of Guests</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5+ People</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <i class="ri-hotel-line"></i>
+                        <select required>
+                            <option value="">Room Type</option>
+                            <option value="standard">Standard Room</option>
+                            <option value="deluxe">Deluxe Room</option>
+                            <option value="suite">Suite</option>
+                            <option value="villa">Private Villa</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <textarea placeholder="Special Requests (Optional)"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="reserve-btn">Confirm Reservation</button>
+            
+            <div class="back-to-home">
+                <a href="index.html"><i class="ri-arrow-left-line"></i> Back to Home</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const destination = urlParams.get('destination');
+            
+            if (destination) {
+                const selectElement = document.getElementById('destinationSelect');
+                for(let i = 0; i < selectElement.options.length; i++) {
+                    if (selectElement.options[i].value === destination) {
+                        selectElement.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

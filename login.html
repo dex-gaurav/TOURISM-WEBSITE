@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Website Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-background"></div>
+        <form class="login-form" id="loginForm" onsubmit="return validateLogin(event)">
+            <h2>Welcome Back</h2>
+            <div class="input-group">
+                <i class="ri-user-line"></i>
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="ri-lock-line"></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <div id="errorMessage" class="error-message"></div>
+            <button type="submit" class="login-btn">Login</button>
+            <div class="form-footer">
+                <a href="#" class="forgot-password">Forgot Password?</a>
+                <a href="#" class="signup-link">Sign Up</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // You can replace these credentials with your desired username and password
+            const validUsername = "admin";
+            const validPassword = "password123";
+
+            if (username === validUsername && password === validPassword) {
+                // Successful login
+                errorMessage.style.color = "green";
+                errorMessage.textContent = "Login successful!";
+                
+                // Redirect to home page after 1 second
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 1000);
+                
+                return true;
+            } else {
+                // Failed login
+                errorMessage.style.color = "red";
+                errorMessage.textContent = "Invalid username or password";
+                
+                // Clear the password field
+                document.getElementById('password').value = '';
+                
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
